@@ -3,12 +3,15 @@ package jm.task.core.jdbc;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    public static Util util = Util.getInstance(); // Создаем пул коннеторов
+
     public static void main(String[] args) throws SQLException {
         UserService userService = new UserServiceImpl();
 
@@ -40,5 +43,11 @@ public class Main {
 //        5. Удаление таблицы
         userService.dropUsersTable();
 
+
+        try {
+            util.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
