@@ -3,14 +3,14 @@ package jm.task.core.jdbc;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
-import jm.task.core.jdbc.util.Util;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jm.task.core.jdbc.dao.UserDaoJDBCImpl.util;
+
 public class Main {
-    public static Util util = Util.getInstance(); // Создаем пул коннеторов
 
     public static void main(String[] args) throws SQLException {
         UserService userService = new UserServiceImpl();
@@ -32,7 +32,7 @@ public class Main {
         }
 
 
-//        3. Получение всех User из базы и вывод в консоль (должен быть переопределен toString в классе User)
+ //       3. Получение всех User из базы и вывод в консоль (должен быть переопределен toString в классе User)
         System.out.println(userService.getAllUsers());
 
 

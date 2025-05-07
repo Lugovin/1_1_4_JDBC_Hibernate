@@ -4,23 +4,22 @@ import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
-import jm.task.core.jdbc.util.Util;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-
     UserDao dao;
 
     public UserServiceImpl() {
-        dao = new UserDaoJDBCImpl();
-    }
 
+////   Вот тут мы вибираем, через что будем работать с БД - через JDBC или Hibernate.
+//  =====================================================
+        //dao = new UserDaoJDBCImpl();
+        dao = new UserDaoHibernateImpl();
+//  ======================================================
+//
+    }
 
     public void createUsersTable() {
         dao.createUsersTable();
